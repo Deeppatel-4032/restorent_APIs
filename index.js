@@ -15,10 +15,10 @@ app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 
 
-app.use("/api", router);
+app.use("/api/v1", router);
 
 app.listen(PORT, (error) => {
     if (!error) {
-        console.log(`Server is Successfully Running http://localhost:${PORT}/api`);
+        console.log(`Server is Successfully Running http://localhost:${PORT}/api/v1`);
     }
 })

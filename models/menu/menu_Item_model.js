@@ -1,16 +1,17 @@
 import mongoose from "mongoose";
 
-const tebleSchema = new mongoose.Schema({
-    tebleNumber : {
+const menu_ItemSchema = new mongoose.Schema({
+    price : {
         type : Number,
         required : true
     },
-    teble_detail : {
+    description : {
         type : String,
         required : true
     },
-    teble_seat : {
-        type : Number,
+    menu_id : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "menu",
         required : true
     },
     status : {
@@ -19,6 +20,6 @@ const tebleSchema = new mongoose.Schema({
         default : "available",
         enum : ["available", "unavailable"]
     }
-})
+});
 
-export const teble_model = mongoose.model("table", tebleSchema);
+export const menu_item_model = mongoose.model("menu_item", menu_ItemSchema);

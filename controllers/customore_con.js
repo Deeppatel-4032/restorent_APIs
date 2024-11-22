@@ -1,7 +1,7 @@
 import { customer_model } from "../models/customers/customer_model.js"
 
-const customerData = async (req, res) => {
-    const customer_DataFind = await customer_model.find();
+const getCustomerData = async (req, res) => {
+    const customer_DataFind = await customer_model.find({});
 
     console.log("customer_DataFind", customer_DataFind);
     
@@ -12,7 +12,9 @@ const customerData = async (req, res) => {
     })
 }
 
-const getCustomerData = async (req, res) => {
+const postCustomerData = async (req, res) => {
+    console.log("REQ", req.body);
+    
     try {
         const { userName, email, address, phone, password} = req.body;
 
@@ -24,17 +26,17 @@ const getCustomerData = async (req, res) => {
             password
         });
 
-        await newCustomer.save();
-        console.log("newCustomer", newCustomer);
+        const addCustomer = await newCustomer.save();
+        console.log("newCustomer", addCustomer);
         
         res.json({
             status: 200,
             message: "Customer Data successfully added.....!!",
-            data: newCustomer
+            data: addCustomer
         })
     } catch (error) {
         console.log("getCustomerData Error", error);
     }
 }
 
-export { customerData, getCustomerData }
+export { getCustomerData, postCustomerData }

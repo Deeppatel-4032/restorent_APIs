@@ -8,6 +8,15 @@ const staffSchema = new mongoose.Schema({
     lname : {
         type : String,
         required : true
+    },
+    phone : {
+        type : Number,
+        required : true
+    },
+    role_Id : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "staff_role",
+        required : true
     }
 
 });

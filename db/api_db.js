@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
-
-const db = mongoose.connect("mongodb+srv://deeppatel7868:SZxwmkTVlw9xFPGT@restorentcluster0.k8jjd.mongodb.net/restorent_Api").then((res) => {
+import dotenv from "dotenv";
+dotenv.config();
+  
+const db = mongoose.connect(`${process.env.MONGODB_URL}`).then((res) => {
     console.log("DB is Connected.......!!");
 }).catch((err) => {
     console.log("DB is not connected........!!", err);
 })
 
-export default db;
+export default db;                                   

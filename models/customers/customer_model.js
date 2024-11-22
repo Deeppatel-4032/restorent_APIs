@@ -20,7 +20,8 @@ const customerSchema = new mongoose.Schema({
     password : {
         type : String,
         required : true
-    }
-})
+    },
 
-export const customer_model = mongoose.model("customer", customerSchema);
+});
+
+export const customer_model = mongoose.model("customers", customerSchema);

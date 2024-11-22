@@ -2,19 +2,28 @@ import mongoose from "mongoose";
 
 const bookingSchema = new mongoose.Schema({
     date : {
-        type : Date,
-        default : Date.now,
+        type : String,
         required : true,
+    },
+    member : {
+        type : Number,
+        required : true
+    },
+    customer_Id : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "customers",
+        required : true
     },
     table_Id : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "table",
         required : true
     },
-    customer_Id : {
-        type : mongoose.Schema.Types.ObjectId,
-        ref : "customer",
-        required : true
+    status : {
+        type : String,
+        required : true,
+        default : "pending",
+        enum : ["pending", "cancle", "complete"]
     },
 });
 

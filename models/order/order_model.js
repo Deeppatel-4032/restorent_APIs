@@ -5,20 +5,32 @@ const orderSchema = new mongoose.Schema({
         type : Number,
         required : true
     },
-    order_details : {
-        type : String,
+    order_date : {
+        type : Date,
         required : true,
-    },
-    booking_Id : {
-        type : mongoose.Schema.Types.ObjectId,
-        ref : "booking",
-        required : true
+        default : Date.now.toString()
     },
     table_Id : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "table",
         required : true
     },
+    customer_Id : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "customer",
+        required : true
+    },
+    staff_id : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "staff",
+        required : true
+    },
+    status : {
+        type : String,
+        required : true,
+        default : "pending",
+        enum : ["pending", "cancle", "complete"]
+    }
 })
 
 export const order_model = mongoose.model("order", orderSchema);
