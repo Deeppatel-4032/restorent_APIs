@@ -1,4 +1,4 @@
-x# Restaurant API
+# Restaurant API
 
 This is a RESTful API for managing a restaurant system using Node.js, Express, and MongoDB.
 
